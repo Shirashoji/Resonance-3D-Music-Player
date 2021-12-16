@@ -14,70 +14,91 @@
 -->
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <!-- Required meta tags -->
-    <meta charset="utf-8"/>
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+        integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <link rel="stylesheet" href="resources/examples.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 
-    <title>Examples</title>
-  </head>
-  <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-5">
-      <a class="navbar-brand" href="index.html">
-        <img src="resources/logo30.png" width="30" height="30" class="d-inline-block align-top">
-      </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="hello-world.html">Hello World</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="vs-pannernode.html">vs. PannerNode</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="room-models.html">Room Models</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="birds.html">Flock of Birds</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="treasure-hunt.html">Treasure Hunt</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="benchmark.html">CPU Benchmark Utility</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
+    <title>Room Models</title>
+</head>
 
+<body>
     <div class="container mt-5">
-      <div class="row justify-content-center">
-        <div class="col-lg-5 mb-4 text-center">
-          <img src="resources/logoLg.png" style="width:100%;max-width:480px;">
+        <div class="row justify-content-center">
+            <div class="col-lg-5 mb-2">
+                <h1>Room Models</h1>
+                <p class="lead">
+                    <img src="resources/headphones.svg" class="icon-lg" alt="headphones">
+                    Best experienced over headphones.
+                </p>
+                <p>
+                    Click (or touch) and drag the source
+                    <img src="resources/musical-note.svg" class="icon" alt="source" id="sourceIcon">
+                    and the listener
+                    <img src="resources/person.svg" class="icon" alt="source" id="listenerIcon">,
+                    to move them front-back/left-right around the room.
+                    Select various options of room sizes and wall materials.
+                </p>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="roomDimensionsSelect" class="col-form-label">Room Dimensions</label>
+                        <select id="roomDimensionsSelect" class="form-control">
+                            <option value="small" selected>Small</option>
+                            <option value="medium">Medium</option>
+                            <option value="large">Large</option>
+                            <option value="huge">Huge</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="roomMaterialsSelect" class="col-form-label">Wall Materials</label>
+                        <select id="roomMaterialsSelect" class="form-control">
+                            <option value="brick" selected>Brick</option>
+                            <option value="curtains">Curtains</option>
+                            <option value="marble">Marble</option>
+                            <option value="acoustic">Acoustic Ceiling Tiles</option>
+                            <option value="outside">Outdoors</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3 mb-2">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <img src="resources/musical-note.svg" class="icon-button">
+                            </span>
+                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-primary" id="sourceButton">Play</button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5 text-center">
+                <div style="width:100%">
+                    <canvas id="canvas"></canvas>
+                </div>
+            </div>
         </div>
-        <div class="col-lg-5 mb-4">
-          <p class="lead">A set of examples demonstrating some of the features of Resonance Audio SDK for the Web.</p>
-          <ul class="list-group">
-            <li class="list-group-item"><a href="hello-world.html">Hello World</a></li>
-            <li class="list-group-item"><a href="vs-pannernode.html">vs. PannerNode</a></li>
-            <li class="list-group-item"><a href="room-models.html">Room Models</a></li>
-            <li class="list-group-item"><a href="birds.html">Flock of Birds</a></li>
-            <li class="list-group-item"><a href="treasure-hunt.html">Treasure Hunt</a></li>
-            <li class="list-group-item"><a href="benchmark.html">CPU Benchmark Utility</a></li>
-          </ul>
-        </div>
-      </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
-  </body>
+    <script src="../build/resonance-audio.min.js"></script>
+    <script src="resources/js/canvas-control.js"></script>
+    <script src="resources/js/music.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
+        integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
+        integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+        crossorigin="anonymous"></script>
+</body>
+
 </html>
